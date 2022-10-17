@@ -1,0 +1,117 @@
+import java.util.*;
+
+class Staff {
+
+    String name;
+    String address;
+
+}
+
+class FullTimeStaff extends Staff {
+
+    String department;
+    int salary;
+
+    public void getdata() {
+        Scanner obj1 = new Scanner(System.in);
+        System.out.println("enter your name");
+        name = obj1.nextLine();
+        Scanner obj2 = new Scanner(System.in);
+        System.out.println("enter your address");
+        address = obj2.nextLine();
+        Scanner obj3 = new Scanner(System.in);
+        System.out.println("enter your Department");
+        department = obj3.nextLine();
+        Scanner obj4 = new Scanner(System.in);
+        System.out.println("enter your salary");
+        salary = obj4.nextInt();
+    }
+
+    public void display() {
+        System.out.println("Name:  " + name);
+        System.out.println("Address:  " + address);
+        System.out.println("Department:  " + department);
+        System.out.println("Salary:   " + salary);
+
+    }
+}
+
+class PartTimeStaff extends Staff {
+
+    int noh;
+    int rateph;
+
+    public void getdata() {
+        Scanner obj1 = new Scanner(System.in);
+        System.out.println("enter your name");
+        name = obj1.nextLine();
+        Scanner obj2 = new Scanner(System.in);
+        System.out.println("enter your address");
+        address = obj2.nextLine();
+        Scanner obj3 = new Scanner(System.in);
+        System.out.println("enter total no of working hours");
+        noh = obj3.nextInt();
+        System.out.println("enter rate per hour amount");
+        rateph = obj3.nextInt();
+    }
+
+    public void display() {
+        System.out.println("Name:  " + name);
+        System.out.println("Address: " + address);
+        System.out.println("total no of working hour : " + noh);
+        System.out.println("rate per hour amount :  " + rateph);
+
+    }
+
+}
+
+public class Program {
+    public static void main(String[] args) {
+        FullTimeStaff object1 = new FullTimeStaff();
+        Scanner in = new Scanner(System.in);
+        int jobtype;
+        System.out.println("select your job type:");
+        System.out.println("1.enter one for fulltime");
+        System.out.println("2.enter two for parttime");
+        jobtype = in.nextInt();  //selecting job type 1 or 2
+        switch (jobtype) {
+            case 1:
+                Scanner emp = new Scanner(System.in);
+                System.out.println("enter total number of fulltime employee");
+                int totalemp = emp.nextInt();// get total num of emp
+                FullTimeStaff[] objectft = new FullTimeStaff[totalemp]; // FullTimeStaff is make as array
+                // totalemp is pass as total number of employee
+                for (int i = 0; i < totalemp; i++) {
+                    objectft[i] = new FullTimeStaff();
+                    // objectft[i] create always new index objectwith the help of forloop
+                    objectft[i].getdata();
+
+                    }
+                    // call display function with always new index object
+                // for display data
+                for (int i = 0; i < totalemp; i++) {
+
+                    objectft[i].display();
+                }
+                break;
+            case 2:
+                Scanner emp1 = new Scanner(System.in);
+                System.out.println("enter totaal number of parttime employee");
+                int totalemp1 = emp1.nextInt();
+                PartTimeStaff[] objectpt = new PartTimeStaff[totalemp1];
+                for (int i = 0; i < totalemp1; i++) {
+
+                    objectpt[i] = new PartTimeStaff();
+
+                    objectpt[i].getdata();
+
+                }
+                for (int i = 0; i < totalemp1; i++) {
+
+                    objectpt[i].display();
+
+                }
+                break;
+        }
+    }
+}
